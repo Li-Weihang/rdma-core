@@ -382,4 +382,10 @@ struct hns_roce_ud_sq_wqe {
 #define UD_SQ_WQE_SMAC_IDX_S 24
 #define UD_SQ_WQE_SMAC_IDX_M (((1UL << 8) - 1) << UD_SQ_WQE_SMAC_IDX_S)
 
+#define DATA_TYPE_NUM	2
+#define STANDARD_ATOMIC_U_BYTE_8	0x8
+#define EXTEND_ATOMIC_U_BYTE_16	0x10
+#define EXTEND_ATOMIC_U_BYTE_32	0x20
+#define EXTEND_ATOMIC_U_BYTE_64	0x40
+
 #endif /* _HNS_ROCE_U_HW_V2_H */
