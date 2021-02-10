@@ -33,7 +33,10 @@
 #ifndef _HNS_ROCE_U_HW_V2_H
 #define _HNS_ROCE_U_HW_V2_H
 
-#define HNS_ROCE_V2_CQE_IS_SQ			0
+enum {
+	CQE_FOR_SQ,
+	CQE_FOR_RQ,
+};
 
 #define HNS_ROCE_V2_CQ_DB_REQ_SOL		1
 #define HNS_ROCE_V2_CQ_DB_REQ_NEXT		0
