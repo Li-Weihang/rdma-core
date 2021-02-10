@@ -243,7 +243,7 @@ static void *get_srq_wqe(struct hns_roce_srq *srq, int n)
 	return srq->buf.buf + (n << srq->wqe_shift);
 }
 
-static void *get_idx_buf(struct hns_roce_idx_que *idx_que, int n)
+static void *get_idx_buf(struct hns_roce_idx_que *idx_que, unsigned int n)
 {
 	return idx_que->buf.buf + (n << idx_que->entry_shift);
 }
@@ -326,7 +326,7 @@ static void update_cq_db(struct hns_roce_context *ctx, struct hns_roce_cq *cq)
 static struct hns_roce_qp *hns_roce_v2_find_qp(struct hns_roce_context *ctx,
 					       uint32_t qpn)
 {
-	int tind = (qpn & (ctx->num_qps - 1)) >> ctx->qp_table_shift;
+	uint32_t tind = (qpn & (ctx->num_qps - 1)) >> ctx->qp_table_shift;
 
 	if (ctx->qp_table[tind].refcnt)
 		return ctx->qp_table[tind].table[qpn & ctx->qp_table_mask];
@@ -336,7 +336,7 @@ static struct hns_roce_qp *hns_roce_v2_find_qp(struct hns_roce_context *ctx,
 
 static void hns_roce_v2_clear_qp(struct hns_roce_context *ctx, uint32_t qpn)
 {
-	int tind = (qpn & (ctx->num_qps - 1)) >> ctx->qp_table_shift;
+	uint32_t tind = (qpn & (ctx->num_qps - 1)) >> ctx->qp_table_shift;
 
 	pthread_mutex_lock(&ctx->qp_table_mutex);
 
